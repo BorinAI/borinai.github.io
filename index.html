@@ -8,6 +8,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Spezifisches Layout für das Discord-Widget auf der Index-Seite */
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .discord-wrapper {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid var(--glass);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* Mobile Responsive: Widget unter den Text schieben */
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .discord-wrapper {
+        margin: 0 auto;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -18,11 +49,17 @@
   </nav>
 
   <main class="hero">
-    <div class="hero-content">
-      <h1>Dein smarter <br><span style="color: var(--primary);">Lernhelfer</span></h1>
-      <p>Erklären, Zusammenfassen, Lernen – mit Borin AI meisterst du jedes Fach im Handumdrehen.</p>
-      <div class="hero-btns">
-        <a class="cta" href="chat.html">Jetzt kostenlos starten</a>
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Dein smarter <br><span style="color: var(--primary);">Lernhelfer</span></h1>
+        <p>Erklären, Zusammenfassen, Lernen – mit Borin AI meisterst du jedes Fach im Handumdrehen. Tritt auch unserer Community bei!</p>
+        <div class="hero-btns">
+          <a class="cta" href="chat.html">Jetzt kostenlos starten</a>
+        </div>
+      </div>
+
+      <div class="discord-wrapper">
+        <iframe src="https://discord.com/widget?id=1455973981214736538&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
       </div>
     </div>
   </main>
