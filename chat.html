@@ -5,20 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Borin AI – Chat</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
-    <a href="index.html">← Zurück</a>
+    <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">← Zurück</a>
     <span class="logo">Borin AI</span>
-  </nav>
+    <div style="width: 60px;"></div> </nav>
 
   <main class="chat-container">
-    <div id="chat"></div>
+    <div id="chat">
+      <div class="msg bot">
+        Hallo! Ich bin Borin AI. Welches Thema möchtest du heute gemeinsam mit mir lernen?
+      </div>
+    </div>
 
-    <form id="chat-form">
-      <input id="message" placeholder="Stelle eine Lernfrage…" autocomplete="off"/>
-      <button type="submit">Senden</button>
-    </form>
+    <div class="input-area">
+      <form id="chat-form">
+        <input 
+          id="message" 
+          placeholder="Stelle eine Lernfrage…" 
+          autocomplete="off" 
+          required
+        />
+        <button type="submit">Senden</button>
+      </form>
+    </div>
   </main>
 
   <script src="js/chat.js"></script>
