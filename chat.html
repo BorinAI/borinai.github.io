@@ -4,16 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Borin AI – Chat</title>
+  
+  <link rel="icon" type="image/png" href="media/logo.png">
+  
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Zusätzliches Styling für die Chat-Navbar */
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--text-main);
+    }
+
+    /* Damit der Chat auf kleinen Bildschirmen nicht klebt */
+    @media (max-width: 600px) {
+      .chat-container {
+        margin: 1rem;
+        height: calc(100vh - 120px);
+      }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
-    <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">← Zurück</a>
-    <span class="logo">Borin AI</span>
-    <div style="width: 60px;"></div> </nav>
+    <div class="nav-content">
+      <a href="index.html" class="back-link">← Zurück</a>
+      <span class="logo">Borin AI</span>
+      <div style="width: 60px;"></div> </div>
+  </nav>
 
   <main class="chat-container">
     <div id="chat">
