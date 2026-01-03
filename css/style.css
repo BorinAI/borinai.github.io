@@ -312,3 +312,64 @@ input:focus, textarea:focus { border-color: var(--primary); }
   .hero-btns { justify-content: center; }
   .discord-wrapper { margin: 0 auto; }
 }
+/* --- KO-FI BANNER --- */
+.support-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.support-banner {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, rgba(192, 132, 252, 0.1) 100%);
+  border: 1px solid var(--glass);
+  border-radius: 20px;
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.support-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.kofi-icon {
+  width: 45px;
+  height: auto;
+  filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.support-text h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.support-text p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.kofi-btn {
+  background: #29abe0; /* Ko-fi Blau oder nutze var(--primary) für lila */
+  box-shadow: 0 10px 20px rgba(41, 171, 224, 0.2);
+}
+
+.kofi-btn:hover {
+  background: #2499c9;
+}
+
+@media (max-width: 768px) {
+  .support-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  .support-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
