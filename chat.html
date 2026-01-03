@@ -6,7 +6,7 @@
   <title>Borin AI – Chat</title>
   
   <link rel="icon" type="image/png" href="media/logo.png">
-  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/style.css?v=1.2"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -15,7 +15,12 @@
   <nav class="navbar">
     <div class="nav-content-chat">
       <a href="index.html" class="back-link">← Zurück</a>
-      <span class="logo">Borin AI</span>
+      <div class="logo-area">
+        <span class="logo">Borin AI</span>
+        <span class="status-indicator">
+          <span class="dot"></span> Online
+        </span>
+      </div>
       <div class="nav-links">
         <a href="login.html" class="nav-item">Login</a>
       </div>
@@ -30,13 +35,28 @@
     </div>
 
     <div class="input-area">
+      <div class="quick-topics">
+        <button type="button" class="topic-chip" onclick="setTopic('Mathe erklären 📐')">Mathe erklären 📐</button>
+        <button type="button" class="topic-chip" onclick="setTopic('Vokabel-Test 📝')">Vokabel-Test 📝</button>
+        <button type="button" class="topic-chip" onclick="setTopic('Zusammenfassung ✍️')">Zusammenfassung ✍️</button>
+        <button type="button" class="topic-chip" onclick="setTopic('Lernplan erstellen 📅')">Lernplan 📅</button>
+      </div>
+
       <form id="chat-form">
         <input id="message" placeholder="Stelle eine Lernfrage…" autocomplete="off" required />
-        <button type="submit">Senden</button>
+        <button type="submit" class="cta">Senden</button>
       </form>
     </div>
   </main>
 
   <script src="js/chat.js"></script>
+  <script>
+    // Funktion für die Quick-Topic Buttons
+    function setTopic(text) {
+      const input = document.getElementById('message');
+      input.value = text;
+      input.focus();
+    }
+  </script>
 </body>
 </html>
