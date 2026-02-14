@@ -6,12 +6,14 @@
   <title>Borin AI – Chat</title>
   
   <link rel="icon" type="image/png" href="media/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=1.2"/>
+  <link rel="stylesheet" href="css/style.css?v=1.3"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-<body class="chat-body">
+<body>
+  <div class="blob"></div>
+
   <nav class="navbar">
     <div class="nav-content-chat">
       <a href="index.html" class="back-link">← Zurück</a>
@@ -27,33 +29,34 @@
     </div>
   </nav>
 
-  <main class="chat-container">
-    <div id="chat">
-      <div class="msg bot">
-        Hallo! Ich bin Borin AI. Welches Thema möchtest du heute gemeinsam mit mir lernen?
-      </div>
-    </div>
-
-    <div class="input-area">
-      <div class="quick-topics">
-        <button type="button" class="topic-chip" onclick="setTopic('Mathe erklären 📐')">Mathe erklären 📐</button>
-        <button type="button" class="topic-chip" onclick="setTopic('Vokabel-Test 📝')">Vokabel-Test 📝</button>
-        <button type="button" class="topic-chip" onclick="setTopic('Zusammenfassung ✍️')">Zusammenfassung ✍️</button>
-        <button type="button" class="topic-chip" onclick="setTopic('Lernplan erstellen 📅')">Lernplan 📅</button>
+  <main class="chat-page">
+    <div class="chat-container">
+      <div id="chat">
+        <div class="msg bot">
+          👋 Hallo! Ich bin Borin AI, dein intelligenter Lerntutor. Welches Thema möchtest du heute gemeinsam mit mir lernen?
+        </div>
       </div>
 
-      <form id="chat-form">
-        <input id="message" placeholder="Stelle eine Lernfrage…" autocomplete="off" required />
-        <button type="submit" class="cta">Senden</button>
-      </form>
+      <div class="input-area">
+        <div class="quick-topics">
+          <button type="button" class="topic-chip" onclick="setTopic('Erkläre mir Quadratische Gleichungen 📐')">Mathe 📐</button>
+          <button type="button" class="topic-chip" onclick="setTopic('Englische Vokabeln zum Thema Familie 📝')">Vokabeln 📝</button>
+          <button type="button" class="topic-chip" onclick="setTopic('Fasse die Französische Revolution zusammen ✍️')">Geschichte ✍️</button>
+          <button type="button" class="topic-chip" onclick="setTopic('Erstelle einen Lernplan für Biologie 📅')">Lernplan 📅</button>
+        </div>
+
+        <form id="chat-form">
+          <input id="message" placeholder="Stelle eine Lernfrage…" autocomplete="off" required />
+          <button type="submit" class="cta">Senden</button>
+        </form>
+      </div>
     </div>
   </main>
 
   <script src="js/chat.js"></script>
   <script>
-    // Funktion für die Quick-Topic Buttons
     function setTopic(text) {
-      const input = document.getElementById('message');
+      const input = document.getElementById("message");
       input.value = text;
       input.focus();
     }

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Borin AI | Dein Profil erstellen</title>
+  
+  <link rel="icon" type="image/png" href="media/logo.png">
+  <link rel="stylesheet" href="css/style.css?v=1.1"/>
+  <link rel="stylesheet" href="css/start.css"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="blob"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">← Borin AI</a>
+    <div class="nav-links">
+      <a href="login.html" class="nav-item">Anmelden</a>
+      <a href="register.html" class="cta small-cta">Registrieren</a>
+    </div>
+  </nav>
+
+  <main class="intro-container">
+    <div class="intro-card">
+      <div class="progress-indicator">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="step active" id="step-1" data-step="1">
+        <div class="step-content">
+          <h2>Willkommen zu Borin AI! 👋</h2>
+          <p class="subtitle">Lass uns dein Profil erstellen, damit wir dir besser helfen können.</p>
+          <div class="input-group">
+            <label for="name">Wie heißt du?</label>
+            <input type="text" id="name" placeholder="Dein Name" required>
+          </div>
+          <button class="cta full-width next-btn" data-next="2">Weiter</button>
+        </div>
+      </div>
+
+      <div class="step" id="step-2" data-step="2">
+        <div class="step-content">
+          <h2>Wie alt bist du? 🎂</h2>
+          <p class="subtitle">Das hilft uns, dir altersgerechte Inhalte zu zeigen.</p>
+          <div class="input-group">
+            <label for="age">Alter</label>
+            <input type="number" id="age" min="8" max="120" placeholder="z.B. 16" required>
+          </div>
+          <button class="cta full-width next-btn" data-next="3">Weiter</button>
+        </div>
+      </div>
+
+      <div class="step" id="step-3" data-step="3">
+        <div class="step-content">
+          <h2>Welche Klasse? 📚</h2>
+          <p class="subtitle">Wähle deine aktuelle Schulklasse.</p>
+          <div class="input-group">
+            <label for="class">Klasse</label>
+            <select id="class" required>
+              <option value="">-- Wähle deine Klasse --</option>
+              <option value="5">5. Klasse</option>
+              <option value="6">6. Klasse</option>
+              <option value="7">7. Klasse</option>
+              <option value="8">8. Klasse</option>
+              <option value="9">9. Klasse</option>
+              <option value="10">10. Klasse</option>
+              <option value="11">11. Klasse (Oberstufe)</option>
+              <option value="12">12. Klasse (Oberstufe)</option>
+              <option value="13">13. Klasse (Oberstufe)</option>
+            </select>
+          </div>
+          <button class="cta full-width next-btn" data-next="4">Weiter</button>
+        </div>
+      </div>
+
+      <div class="step" id="step-4" data-step="4">
+        <div class="step-content">
+          <h2>Welches Bundesland? 🗺️</h2>
+          <p class="subtitle">Das hilft uns mit deinem Lehrplan.</p>
+          <div class="input-group">
+            <label for="state">Bundesland</label>
+            <select id="state" required>
+              <option value="">-- Wähle dein Bundesland --</option>
+              <option value="bw">Baden-Württemberg</option>
+              <option value="by">Bayern</option>
+              <option value="be">Berlin</option>
+              <option value="bb">Brandenburg</option>
+              <option value="hb">Bremen</option>
+              <option value="hh">Hamburg</option>
+              <option value="he">Hessen</option>
+              <option value="mv">Mecklenburg-Vorpommern</option>
+              <option value="ni">Niedersachsen</option>
+              <option value="nw">Nordrhein-Westfalen</option>
+              <option value="rp">Rheinland-Pfalz</option>
+              <option value="sl">Saarland</option>
+              <option value="sn">Sachsen</option>
+              <option value="st">Sachsen-Anhalt</option>
+              <option value="sh">Schleswig-Holstein</option>
+              <option value="th">Thüringen</option>
+            </select>
+          </div>
+          <button class="cta full-width next-btn" data-next="5">Weiter</button>
+        </div>
+      </div>
+
+      <div class="step" id="step-5" data-step="5">
+        <div class="step-content">
+          <h2>Deine Lieblingsfächer? ⭐</h2>
+          <p class="subtitle">Wähle die Fächer aus, in denen du Unterstützung brauchst.</p>
+          <div class="subjects-grid">
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="mathematik">
+              <span class="checkbox-label">Mathematik</span>
+            </label>
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="deutsch">
+              <span class="checkbox-label">Deutsch</span>
+            </label>
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="englisch">
+              <span class="checkbox-label">Englisch</span>
+            </label>
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="physik">
+              <span class="checkbox-label">Physik</span>
+            </label>
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="chemie">
+              <span class="checkbox-label">Chemie</span>
+            </label>
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="biologie">
+              <span class="checkbox-label">Biologie</span>
+            </label>
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="geschichte">
+              <span class="checkbox-label">Geschichte</span>
+            </label>
+            <label class="subject-checkbox">
+              <input type="checkbox" name="subject" value="geographie">
+              <span class="checkbox-label">Geographie</span>
+            </label>
+          </div>
+          <button class="cta full-width next-btn" data-next="6">Weiter</button>
+        </div>
+      </div>
+
+      <div class="step" id="step-6" data-step="6">
+        <div class="step-content">
+          <h2>Du bist fast fertig! 🎉</h2>
+          <p class="subtitle">Erstelle jetzt dein kostenloses Konto um zu starten.</p>
+          <div class="summary">
+            <p><strong>Name:</strong> <span id="summary-name">--</span></p>
+            <p><strong>Alter:</strong> <span id="summary-age">--</span></p>
+            <p><strong>Klasse:</strong> <span id="summary-class">--</span></p>
+            <p><strong>Bundesland:</strong> <span id="summary-state">--</span></p>
+          </div>
+          <button class="cta full-width" id="registerBtn">Jetzt kostenlos registrieren →</button>
+          <p class="terms-text">Mit Registrierung akzeptierst du unsere Datenschutzerklärung</p>
+        </div>
+      </div>
+
+      <div class="step-controls">
+        <button class="back-btn" id="backBtn" style="display: none;">← Zurück</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2024 Borin AI. Alle Rechte vorbehalten. Design für Lernende.</p>
+  </footer>
+
+  <script src="js/start.js"></script>
+</body>
+</html>

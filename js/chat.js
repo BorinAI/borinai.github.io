@@ -1,11 +1,13 @@
 /**
- * Borin AI - Chat Frontend Logic
- * Verbindet das UI mit dem Node.js Backend (server.js)
+ * Borin AI - Chat Frontend
+ * Nutzt lokalen Backend-Server als Proxy für KI-Responses
  */
 
 const chat = document.getElementById("chat");
 const form = document.getElementById("chat-form");
 const input = document.getElementById("message");
+
+let conversationHistory = [];
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -13,60 +15,90 @@ form.addEventListener("submit", async (e) => {
   const text = input.value.trim();
   if (!text) return;
 
-  // 1. Benutzer-Nachricht im UI anzeigen
+  // Benutzer-Nachricht im UI anzeigen
   addMessage(text, "user");
   input.value = "";
+  input.focus();
 
-  // 2. Lade-Animation (Typing Indicator) anzeigen
+  // Lade-Animation anzeigen
   const loadingDiv = document.createElement("div");
-  loadingDiv.className = "msg bot typing";
-  loadingDiv.textContent = "Borin AI denkt nach...";
+  loadingDiv.className = "msg bot";
+  loadingDiv.innerHTML = `<span class="typing-animation">Borin AI denkt nach</span>`;
   chat.appendChild(loadingDiv);
   chat.scrollTop = chat.scrollHeight;
 
   try {
-    // 3. Anfrage an dein lokales Backend senden
+    // KI-Antwort vom Backend abrufen
     const response = await fetch('http://localhost:3000/api/chat', {
       method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json' 
+      headers: {
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ message: text })
     });
 
     if (!response.ok) {
-      throw new Error('Netzwerk-Antwort war nicht ok');
+      const errorData = await response.json();
+      throw new Error(errorData.error || `Fehler ${response.status}`);
     }
 
     const data = await response.json();
 
-    // 4. Lade-Animation entfernen und KI-Antwort anzeigen
-    chat.removeChild(loadingDiv);
-    addMessage(data.response, "bot");
-
-  } catch (error) {
-    // Fehlerbehandlung (z.B. wenn der Server nicht läuft)
+    // Lade-Animation entfernen
     if (chat.contains(loadingDiv)) {
       chat.removeChild(loadingDiv);
     }
-    addMessage("Fehler: Ich konnte keine Verbindung zum Server herstellen. Stelle sicher, dass 'node server.js' läuft.", "bot");
-    console.error("Fetch Error:", error);
+    
+    // KI-Antwort anzeigen
+    addMessage(data.response, "bot");
+    conversationHistory.push({ role: "user", content: text });
+    conversationHistory.push({ role: "assistant", content: data.response });
+
+  } catch (error) {
+    console.error("Chat Error:", error);
+    
+    // Lade-Animation entfernen
+    if (chat.contains(loadingDiv)) {
+      chat.removeChild(loadingDiv);
+    }
+    
+    // Fehlerbehandlung
+    let errorMessage = "❌ Verbindungsfehler!";
+    
+    if (error.message.includes("Failed to fetch")) {
+      errorMessage = "⚠️ Backend läuft nicht! Starte es mit:\nnode server.js";
+    } else if (error.message.includes("Currently loading")) {
+      errorMessage = "⏳ Das KI-Modell lädt gerade... Versuche es in 30 Sekunden erneut.";
+    } else if (error.message) {
+      errorMessage = `⚠️ ${error.message}`;
+    }
+    
+    addMessage(errorMessage, "bot");
   }
 });
 
 /**
- * Hilfsfunktion zum Erstellen der Nachrichten-Bubbles
+ * Nachrichten zum Chat hinzufügen
  */
 function addMessage(text, sender) {
   const div = document.createElement("div");
   div.className = "msg " + sender;
   
-  //textContent ist sicher gegen XSS, erhält aber keine Zeilenumbrüche.
-  //Wir ersetzen Zeilenumbrüche durch <br> Tags für eine schönere Darstellung.
-  div.innerText = text; 
+  // Text darstellen
+  div.innerText = text;
+  
+  // Animation
+  div.style.animation = "fadeInMessage 0.3s ease-out";
   
   chat.appendChild(div);
   
   // Automatisch nach unten scrollen
-  chat.scrollTop = chat.scrollHeight;
+  setTimeout(() => {
+    chat.scrollTop = chat.scrollHeight;
+  }, 50);
 }
+
+// Scroll beim Laden
+window.addEventListener("load", () => {
+  chat.scrollTop = chat.scrollHeight;
+});
